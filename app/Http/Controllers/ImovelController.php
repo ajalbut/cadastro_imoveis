@@ -11,7 +11,7 @@ class ImovelController extends Controller
 {
 	public function index()
 	{
-		$imoveis = Imovel::orderBy('created_at', 'desc')->paginate(10);
+		$imoveis = Imovel::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(10);
 		return view('imoveis.index',['imoveis' => $imoveis]);
 	}
 	
